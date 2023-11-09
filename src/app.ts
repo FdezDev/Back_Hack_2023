@@ -1,26 +1,28 @@
 import express from 'express';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { Signale } from 'signale';
+import { initializeDatabase } from './database/sequelize'; 
+import { UsersRouter } from './Users/infraestructure/usersRouter';
 
 const app = express();
 const signale = new Signale();
 
 app.use(express.json());
-
-// Configura el proxy middleware para cada servicio
-app.use('/api/gateway/v1/clients', createProxyMiddleware({ target: 'http://localhost:3002', changeOrigin: true }));
-app.use('/api/gateway/v1/products', createProxyMiddleware({ target: 'http://localhost:3001', changeOrigin: true }));
-app.use('/api/gateway/v1/orders', createProxyMiddleware({ target: 'http://localhost:3003', changeOrigin: true }));
+app.use('/user',UsersRouter);
 
 async function startServer() {
-    // No necesitas inicializar la base de datos aquí si esto actúa como un API Gateway
-    // La inicialización de la base de datos se realizaría en cada microservicio individual
+    try {
 
-    // Inicia el servidor Express
-    app.listen(3000, () => {
-        signale.success("API Gateway running on port 3000");
-    });
+        // Luego inicializa y conecta la base de datos
+        await initializeDatabase();
+        
+        // Después inicia el servidor Express
+        app.listen(3000, () => {
+            signale.success("Server online in port 3000");
+        });
+    } catch (error) {
+        signale.error("Error al iniciar el servidor:", error);
+    }
 }
 
-// Inicia el API Gateway
+// Inicia todo
 startServer();

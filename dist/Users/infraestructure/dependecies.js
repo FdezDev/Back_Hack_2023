@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.addUsersController = exports.addUsersUseCase = exports.pgsqlUsersRepository = void 0;
+const addUsersUseCase_1 = require("../application/addUsersUseCase");
+const addUsersController_1 = require("./controller/addUsersController");
+const psqlUsersRepository_1 = require("./psqlUsersRepository");
+exports.pgsqlUsersRepository = new psqlUsersRepository_1.PgsqlUsersRepository();
+exports.addUsersUseCase = new addUsersUseCase_1.AddUserUseCase(exports.pgsqlUsersRepository);
+exports.addUsersController = new addUsersController_1.AddUsersController(exports.addUsersUseCase);
+//export const getClientsUseCase = new GetClientsUseCase(pgsqlClientsRepository);
+//export const getClientsController = new GetClientsController(getClientsUseCase);

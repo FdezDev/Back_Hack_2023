@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
-import ClientsModel from '../clients/infraestructure/models/clientsModel';
-import ProductsModel from '../products/infraestructure/models/ProductsModel';
-import { OrderModel } from '../orders/infraestructure/models/orderModel';
+import UsersModel from '../Users/infraestructure/models/usersModel';
+
 
 export const sequelize = new Sequelize({
     dialect: 'postgres',
@@ -9,7 +8,7 @@ export const sequelize = new Sequelize({
     database: 'postgres',
     username: 'postgres',
     password: 'yeremi224',
-    models: [ClientsModel , ProductsModel, OrderModel],
+    models: [UsersModel],
 });
 
 export async function initializeDatabase() {
