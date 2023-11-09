@@ -2,7 +2,8 @@ import express from 'express';
 import { Signale } from 'signale';
 import { initializeDatabase } from './database/sequelize'; 
 import { UsersRouter } from './Users/infraestructure/usersRouter';
-import { authRouter } from './auth/infraestructure/authRouter';
+import { authRouter } from './authUser/infraestructure/authRouter';
+import { authAdminRouter } from './authAdmin/infraestructure/authAdminRouter';
 
 
 const app = express();
@@ -11,6 +12,7 @@ const signale = new Signale();
 app.use(express.json());
 app.use('/user',UsersRouter);
 app.use('auth',authRouter);
+app.use('/authAdmin', authAdminRouter);
 
 async function startServer() {
     try {
