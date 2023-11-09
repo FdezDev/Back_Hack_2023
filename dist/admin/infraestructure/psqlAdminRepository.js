@@ -16,10 +16,10 @@ exports.PgsqlAdminRepository = void 0;
 const admin_1 = require("../domain/admin");
 const adminModel_1 = __importDefault(require("./models/adminModel"));
 class PgsqlAdminRepository {
-    addAdmin(Name, email, password) {
+    addAdmin(name, email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdAdmin = yield adminModel_1.default.create({ Name, email, password });
+                const createdAdmin = yield adminModel_1.default.create({ name, email, password });
                 return new admin_1.Admin(createdAdmin.id, createdAdmin.name, createdAdmin.email, createdAdmin.password);
             }
             catch (error) {

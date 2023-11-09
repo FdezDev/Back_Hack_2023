@@ -4,9 +4,9 @@ import AdminModel from "./models/adminModel";
 
 
 export class PgsqlAdminRepository implements AdminRepository {
-    async addAdmin(Name: string, email: string, password: string): Promise<Admin | null> {
+    async addAdmin(name: string, email: string, password: string): Promise<Admin | null> {
         try {
-            const createdAdmin = await AdminModel.create({ Name, email, password });
+            const createdAdmin = await AdminModel.create({ name, email, password });
             return new Admin(createdAdmin.id, createdAdmin.name, createdAdmin.email, createdAdmin.password);
         } catch (error) {
             console.error("Error in PgsqlClientsRepository:", error);

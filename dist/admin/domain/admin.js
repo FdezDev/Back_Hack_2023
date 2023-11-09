@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Admin = void 0;
 class Admin {
-    constructor(id, Name, email, password) {
+    constructor(id, name, email, password) {
         this.id = id;
-        this.Name = Name;
+        this.name = name;
         this.email = email;
         this.password = password;
     }

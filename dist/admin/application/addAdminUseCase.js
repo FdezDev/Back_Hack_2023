@@ -14,10 +14,10 @@ class AddAdminUseCase {
     constructor(adminRepository) {
         this.adminRepository = adminRepository;
     }
-    run(Name, email, password) {
+    run(name, email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdAdmin = yield this.adminRepository.addAdmin(Name, email, password);
+                const createdAdmin = yield this.adminRepository.addAdmin(name, email, password);
                 return createdAdmin;
             }
             catch (error) {

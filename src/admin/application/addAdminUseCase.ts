@@ -3,9 +3,9 @@ import { AdminRepository } from "../domain/adminRepository";
 
 export class AddAdminUseCase {
     constructor(readonly adminRepository: AdminRepository) {}
-    async run(Name: string, email: string, password: string): Promise<Admin | null> {
+    async run(name: string, email: string, password: string): Promise<Admin | null> {
         try {
-            const createdAdmin = await this.adminRepository.addAdmin(Name, email, password);
+            const createdAdmin = await this.adminRepository.addAdmin(name, email, password);
             return createdAdmin;
         } catch (error) {
             console.error("Error in addUserUseCase:", error);
