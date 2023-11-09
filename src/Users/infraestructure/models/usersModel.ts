@@ -31,6 +31,12 @@ class UsersModel extends Model {
     })
     public IddCi!: number;
 
+    @Column({
+        type: DataType.STRING(128),
+        allowNull: false
+    })
+    public status!: string;
+
 }
 
 export default UsersModel;

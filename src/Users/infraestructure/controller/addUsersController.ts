@@ -6,10 +6,10 @@ export class AddUsersController {
     constructor(readonly addusersusecase: AddUserUseCase) { }
 
     async run(req: Request, res: Response) {
-        const { Name, Cic, IddCi } = req.body;
+        const { Name, Cic, IddCi, status } = req.body;
 
         try {
-            const adduses = await this.addusersusecase.run(Name, Cic, IddCi);
+            const adduses = await this.addusersusecase.run(Name, Cic, IddCi, status);
 
             if (adduses) {
                 return res.status(201).send({

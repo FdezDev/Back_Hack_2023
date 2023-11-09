@@ -3,6 +3,7 @@ export class Users {
         readonly id: number,
         readonly Name: string,
         readonly  Cic: number,
-        public  IddCi: number 
+        readonly  IddCi: number,
+        readonly status: string
     ) { }
 }
