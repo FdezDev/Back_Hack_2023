@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
-import { AddUserUseCase } from "../../application/addUsersUseCase";
+import { AddAdminUseCase } from "../../application/addAdminUseCase";
 
 
-export class AddUsersController {
-    constructor(readonly addusersusecase: AddUserUseCase) { }
+export class AddAdminController {
+    constructor(readonly addAdminusecase: AddAdminUseCase) { }
 
     async run(req: Request, res: Response) {
-        const { Name, Cic, IddCi, status } = req.body;
+        const { name, email, password } = req.body;
 
         try {
-            const adduses = await this.addusersusecase.run(Name, Cic, IddCi, status);
+            const addadmin = await this.addAdminusecase.run(name, email, password);
 
-            if (adduses) {
+            if (addadmin) {
                 return res.status(201).send({
                     status: "success",
-                    data: adduses,
-                    message: "Client created successfully"
+                    data: addadmin,
+                    message: "Admin created successfully"
                 });
             } else {
                 return res.status(400).send({

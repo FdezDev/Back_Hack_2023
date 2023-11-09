@@ -9,21 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddUsersController = void 0;
-class AddUsersController {
-    constructor(addusersusecase) {
-        this.addusersusecase = addusersusecase;
+exports.AddAdminController = void 0;
+class AddAdminController {
+    constructor(addAdminusecase) {
+        this.addAdminusecase = addAdminusecase;
     }
     run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { Name, Cic, IddCi, status } = req.body;
+            const { name, email, password } = req.body;
             try {
-                const adduses = yield this.addusersusecase.run(Name, Cic, IddCi, status);
-                if (adduses) {
+                const addadmin = yield this.addAdminusecase.run(name, email, password);
+                if (addadmin) {
                     return res.status(201).send({
                         status: "success",
-                        data: adduses,
-                        message: "Client created successfully"
+                        data: addadmin,
+                        message: "Admin created successfully"
                     });
                 }
                 else {
@@ -44,4 +44,4 @@ class AddUsersController {
         });
     }
 }
-exports.AddUsersController = AddUsersController;
+exports.AddAdminController = AddAdminController;

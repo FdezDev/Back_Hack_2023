@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-let UsersModel = class UsersModel extends sequelize_typescript_1.Model {
+let AdminModel = class AdminModel extends sequelize_typescript_1.Model {
 };
 __decorate([
     (0, sequelize_typescript_1.Column)({
@@ -15,35 +15,29 @@ __decorate([
         autoIncrement: true,
         primaryKey: true
     })
-], UsersModel.prototype, "id", void 0);
+], AdminModel.prototype, "id", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(128),
         allowNull: false
     })
-], UsersModel.prototype, "Name", void 0);
+], AdminModel.prototype, "name", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(128),
         allowNull: false
     })
-], UsersModel.prototype, "Cic", void 0);
+], AdminModel.prototype, "email", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(128),
         allowNull: false
     })
-], UsersModel.prototype, "IddCi", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.STRING(128),
-        allowNull: false
-    })
-], UsersModel.prototype, "status", void 0);
-UsersModel = __decorate([
+], AdminModel.prototype, "password", void 0);
+AdminModel = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: 'users',
+        tableName: 'admin',
         timestamps: true
     })
-], UsersModel);
-exports.default = UsersModel;
+], AdminModel);
+exports.default = AdminModel;
