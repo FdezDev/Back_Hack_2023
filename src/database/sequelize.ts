@@ -8,7 +8,7 @@ export const sequelize = new Sequelize({
     host: 'localhost',
     database: 'postgres',
     username: 'postgres',
-    password: 'yeremi224',
+    password: 'cxxmigue211218',
     models: [UsersModel, AdminModel],
 });
 

@@ -1,13 +1,13 @@
 import express from 'express';
-import { AddCandidatesController } from './controller/addCandidatesController';
-import { GetCandidatesController } from './controller/getCandidatesController';
+import { addCandidatesController } from './dependencies';
+import { getCandidatesController } from './dependencies';
 
 export const candidatesRouter = express.Router();
 
 candidatesRouter.post('/addCandidates', 
-    AddCandidatesController.run.bind(AddCandidatesController)
+    addCandidatesController.run.bind(addCandidatesController)
 );
 
 candidatesRouter.get('/getAllCandidates',
-    GetCandidatesController.run.bind(GetCandidatesController)
+    getCandidatesController.run.bind(getCandidatesController)
 );  

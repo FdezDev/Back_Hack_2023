@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getCandidatesController = exports.getCandidatesCase = exports.addCandidatesController = exports.addCandidatesCase = exports.psqlCandidatesRepository = void 0;
+const psqlCandidatesRepo_1 = require("./psqlCandidatesRepo");
+const addCandidatesCase_1 = require("../application/addCandidatesCase");
+const addCandidatesController_1 = require("./controller/addCandidatesController");
+const getCandidatesController_1 = require("./controller/getCandidatesController");
+const getCandidatesCase_1 = require("../application/getCandidatesCase");
+exports.psqlCandidatesRepository = new psqlCandidatesRepo_1.PgsqlCandidatesRepository();
+exports.addCandidatesCase = new addCandidatesCase_1.AddCandidatesCase(exports.psqlCandidatesRepository);
+exports.addCandidatesController = new addCandidatesController_1.AddCandidatesController(exports.addCandidatesCase);
+exports.getCandidatesCase = new getCandidatesCase_1.GetCandidatesCase(exports.psqlCandidatesRepository);
+exports.getCandidatesController = new getCandidatesController_1.GetCandidatesController(exports.getCandidatesCase);
