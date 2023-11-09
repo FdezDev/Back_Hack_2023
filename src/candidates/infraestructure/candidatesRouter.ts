@@ -1,5 +1,6 @@
 import express from 'express';
 import { AddCandidatesController } from './controller/addCandidatesController';
+import { GetCandidatesController } from './controller/getCandidatesController';
 
 export const candidatesRouter = express.Router();
 
@@ -8,5 +9,5 @@ candidatesRouter.post('/addCandidates',
 );
 
 candidatesRouter.get('/getAllCandidates',
-    AddCandidatesController.run.bind(AddCandidatesController)
-);
+    GetCandidatesController.run.bind(GetCandidatesController)
+);  

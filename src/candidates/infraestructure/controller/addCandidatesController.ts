@@ -16,5 +16,4 @@ export class AddCandidatesController {
             return res.status(500).json({ message: error });
         }
     }
-
 }
