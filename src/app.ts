@@ -2,12 +2,14 @@ import express from 'express';
 import { Signale } from 'signale';
 import { initializeDatabase } from './database/sequelize'; 
 import { UsersRouter } from './Users/infraestructure/usersRouter';
+import { AdminRouter } from './admin/infraestructure/adminRouter';
 
 const app = express();
 const signale = new Signale();
 
 app.use(express.json());
 app.use('/user',UsersRouter);
+app.use('/admin',AdminRouter);
 
 async function startServer() {
     try {

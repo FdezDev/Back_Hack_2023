@@ -12,15 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PgsqlUsersRepository = void 0;
-const users_1 = require("../domain/users");
-const usersModel_1 = __importDefault(require("./models/usersModel"));
-class PgsqlUsersRepository {
-    addUser(Name, Cic, IddCi) {
+exports.PgsqlAdminRepository = void 0;
+const admin_1 = require("../domain/admin");
+const adminModel_1 = __importDefault(require("./models/adminModel"));
+class PgsqlAdminRepository {
+    addAdmin(Name, email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdUsers = yield usersModel_1.default.create({ Name, Cic, IddCi });
-                return new users_1.Users(createdUsers.id, createdUsers.Name, createdUsers.Cic, createdUsers.IddCi, createdUsers.status);
+                const createdAdmin = yield adminModel_1.default.create({ Name, email, password });
+                return new admin_1.Admin(createdAdmin.id, createdAdmin.name, createdAdmin.email, createdAdmin.password);
             }
             catch (error) {
                 console.error("Error in PgsqlClientsRepository:", error);
@@ -31,8 +31,8 @@ class PgsqlUsersRepository {
     getAllUser() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield usersModel_1.default.findAll();
-                return users.map(users => new users_1.Users(users.id, users.Name, users.Cic, users.IddCi, users.status));
+                const admin = yield adminModel_1.default.findAll();
+                return admin.map(admin => new admin_1.Admin(admin.id, admin.name, admin.email, admin.password));
             }
             catch (error) {
                 console.error("Error in PgsqlClientsRepository:", error);
@@ -44,4 +44,4 @@ class PgsqlUsersRepository {
         throw new Error("Method not implemented.");
     }
 }
-exports.PgsqlUsersRepository = PgsqlUsersRepository;
+exports.PgsqlAdminRepository = PgsqlAdminRepository;

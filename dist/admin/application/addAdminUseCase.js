@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddUserUseCase = void 0;
-class AddUserUseCase {
-    constructor(userRepository) {
-        this.userRepository = userRepository;
+exports.AddAdminUseCase = void 0;
+class AddAdminUseCase {
+    constructor(adminRepository) {
+        this.adminRepository = adminRepository;
     }
-    run(Name, Cic, IddCi, status) {
+    run(Name, email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdUser = yield this.userRepository.addUser(Name, Cic, IddCi, status);
-                return createdUser;
+                const createdAdmin = yield this.adminRepository.addAdmin(Name, email, password);
+                return createdAdmin;
             }
             catch (error) {
                 console.error("Error in addUserUseCase:", error);
@@ -27,4 +27,4 @@ class AddUserUseCase {
         });
     }
 }
-exports.AddUserUseCase = AddUserUseCase;
+exports.AddAdminUseCase = AddAdminUseCase;
