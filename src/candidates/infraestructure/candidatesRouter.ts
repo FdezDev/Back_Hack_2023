@@ -6,3 +6,7 @@ export const candidatesRouter = express.Router();
 candidatesRouter.post('/addCandidates', 
     AddCandidatesController.run.bind(AddCandidatesController)
 );
+
+candidatesRouter.get('/getAllCandidates',
+    AddCandidatesController.run.bind(AddCandidatesController)
+);
