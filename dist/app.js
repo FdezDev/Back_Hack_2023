@@ -16,10 +16,20 @@ const express_1 = __importDefault(require("express"));
 const signale_1 = require("signale");
 const sequelize_1 = require("./database/sequelize");
 const usersRouter_1 = require("./Users/infraestructure/usersRouter");
+<<<<<<< HEAD
+const authRouter_1 = require("./auth/infraestructure/authRouter");
+=======
+const adminRouter_1 = require("./admin/infraestructure/adminRouter");
+>>>>>>> AriselDev
 const app = (0, express_1.default)();
 const signale = new signale_1.Signale();
 app.use(express_1.default.json());
 app.use('/user', usersRouter_1.UsersRouter);
+<<<<<<< HEAD
+app.use('auth', authRouter_1.authRouter);
+=======
+app.use('/admin', adminRouter_1.AdminRouter);
+>>>>>>> AriselDev
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

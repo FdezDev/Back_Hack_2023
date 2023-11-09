@@ -9,22 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddUserUseCase = void 0;
-class AddUserUseCase {
-    constructor(userRepository) {
-        this.userRepository = userRepository;
+exports.AuthController = void 0;
+// parte de autenticacion de la aplicacion con cic e iddci
+class AuthController {
+    constructor(authusercase) {
+        this.authusercase = authusercase;
     }
-    run(Name, Cic, IddCi, status) {
+    run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const createdUser = yield this.userRepository.addUser(Name, Cic, IddCi, status);
-                return createdUser;
+            const { Cic, IddCi } = req.body;
+            const auth = yield this.authusercase.run(Cic, IddCi);
+            if (auth.status === 'success') {
+                return res.status(200).json({ auth });
             }
-            catch (error) {
-                console.error("Error in addUserUseCase:", error);
-                return null;
-            }
+            return res.status(400).json({ auth });
         });
     }
 }
-exports.AddUserUseCase = AddUserUseCase;
+exports.AuthController = AuthController;

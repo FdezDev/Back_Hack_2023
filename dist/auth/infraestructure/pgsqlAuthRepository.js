@@ -8,23 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddUserUseCase = void 0;
-class AddUserUseCase {
-    constructor(userRepository) {
-        this.userRepository = userRepository;
-    }
-    run(Name, Cic, IddCi, status) {
+exports.PgsqlAuthRepository = void 0;
+const usersModel_1 = __importDefault(require("../../Users/infraestructure/models/usersModel"));
+class PgsqlAuthRepository {
+    verifyAuth(Cic, IddCi) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const createdUser = yield this.userRepository.addUser(Name, Cic, IddCi, status);
-                return createdUser;
+            const user = yield usersModel_1.default.findOne({ where: { Cic, IddCi } });
+            if (user) {
+                return { Cic: user.Cic, IddCi: user.IddCi };
             }
-            catch (error) {
-                console.error("Error in addUserUseCase:", error);
-                return null;
-            }
+            return null;
         });
     }
 }
-exports.AddUserUseCase = AddUserUseCase;
+exports.PgsqlAuthRepository = PgsqlAuthRepository;

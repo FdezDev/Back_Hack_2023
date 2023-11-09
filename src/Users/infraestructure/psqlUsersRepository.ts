@@ -6,7 +6,7 @@ export class PgsqlUsersRepository implements UserRepository {
     async addUser(Name: string, Cic: number, IddCi: number): Promise<Users | null> {
         try {
             const createdUsers = await UsersModel.create({ Name, Cic, IddCi });
-            return new Users(createdUsers.id, createdUsers.Name, createdUsers.Cic, createdUsers.IddCi);
+            return new Users(createdUsers.id, createdUsers.Name, createdUsers.Cic, createdUsers.IddCi, createdUsers.status);
         } catch (error) {
             console.error("Error in PgsqlClientsRepository:", error);
             return null;
@@ -16,7 +16,7 @@ export class PgsqlUsersRepository implements UserRepository {
     async getAllUser(): Promise<Users[]> {
         try {
             const users = await UsersModel.findAll();
-            return users.map(users => new Users(users.id, users.Name, users.Cic, users.IddCi));
+            return users.map(users => new Users(users.id, users.Name, users.Cic, users.IddCi, users.status));
         } catch (error) {
             console.error("Error in PgsqlClientsRepository:", error);
             return [];

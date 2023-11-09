@@ -1,10 +1,10 @@
 import { Model, DataType, Table, Column } from 'sequelize-typescript';
 
 @Table({
-    tableName: 'users',
+    tableName: 'admin',
     timestamps: true 
 })
-class UsersModel extends Model {
+class AdminModel extends Model {
     
     @Column({
         type: DataType.INTEGER.UNSIGNED,
@@ -17,26 +17,20 @@ class UsersModel extends Model {
         type: DataType.STRING(128),
         allowNull: false
     })
-    public Name!: string;
+    public name!: string;
 
     @Column({
         type: DataType.STRING(128),
         allowNull: false
     })
-    public Cic!: number;
+    public email!: string;
 
     @Column({
         type: DataType.STRING(128),
         allowNull: false
     })
-    public IddCi!: number;
-
-    @Column({
-        type: DataType.STRING(128),
-        allowNull: false
-    })
-    public status!: string;
+    public password!: string;
 
 }
 
-export default UsersModel;
+export default AdminModel;

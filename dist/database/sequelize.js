@@ -15,13 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.initializeDatabase = exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const usersModel_1 = __importDefault(require("../Users/infraestructure/models/usersModel"));
+const adminModel_1 = __importDefault(require("../admin/infraestructure/models/adminModel"));
 exports.sequelize = new sequelize_typescript_1.Sequelize({
     dialect: 'postgres',
     host: 'localhost',
     database: 'postgres',
     username: 'postgres',
     password: 'yeremi224',
-    models: [usersModel_1.default],
+    models: [usersModel_1.default, adminModel_1.default],
 });
 function initializeDatabase() {
     return __awaiter(this, void 0, void 0, function* () {
