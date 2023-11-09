@@ -7,8 +7,8 @@ const authRepository = new PgsqlAuthRepository
 const authUseCase = new AuthUseCase(authRepository);
 const authController = new AuthController(authUseCase);
 
-const authRouter = express.Router();
+const authUserRouter = express.Router();
 
-authRouter.post('/auth', authController.run.bind(authController));
+authUserRouter.post('/auth', authController.run.bind(authController));
 
-export { authRouter };
+export { authUserRouter };
